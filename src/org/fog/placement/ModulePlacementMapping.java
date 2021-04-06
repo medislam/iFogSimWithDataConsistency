@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.fog.application.AppModule;
 import org.fog.application.Application;
-import org.fog.entities.FogDevice;
+import org.fog2.entities.FogDevice;
 
 public class ModulePlacementMapping extends ModulePlacement{
 

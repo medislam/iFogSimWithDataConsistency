@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.fog.entities.Tuple;
 import org.fog.utils.FogEvents;
+import org.fog2.entities.Tuple;
 
 /**
  * This class implements the future event queue used by {@link Simulation}. The event queue uses a

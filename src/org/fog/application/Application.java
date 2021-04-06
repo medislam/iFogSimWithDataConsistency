@@ -19,13 +19,13 @@ import org.fog.application.selectivity.FractionalSelectivity;
 import org.fog.application.selectivity.SelectivityModel;
 import org.fog.dataConsistency.DataConsistency;
 import org.fog.dataConsistency.QuorumConsistency;
-import org.fog.entities.FogDevice;
-import org.fog.entities.Tuple;
 import org.fog.examples.DataPlacement;
 import org.fog.placement.ModuleMapping;
 import org.fog.scheduler.TupleScheduler;
 import org.fog.utils.FogUtils;
 import org.fog.utils.GeoCoverage;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Tuple;
 
 /**
  * Class represents an application in the Distributed Dataflow Model.

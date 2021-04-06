@@ -15,10 +15,10 @@ import org.apache.commons.math3.util.Pair;
 import org.cloudbus.cloudsim.Log;
 import org.fog.application.AppEdge;
 import org.fog.cplex.DataAllocation;
-import org.fog.entities.Tuple;
 import org.fog.examples.DataPlacement;
 import org.fog.stats.LatencyStats;
 import org.fog.utils.Config;
+import org.fog2.entities.Tuple;
 
 public abstract class DataConsistency {
 	

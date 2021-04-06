@@ -7,7 +7,7 @@ import java.util.Map;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.fog.application.AppModule;
 import org.fog.application.Application;
-import org.fog.entities.FogDevice;
+import org.fog2.entities.FogDevice;
 
 public abstract class ModulePlacement {
 	

@@ -6,9 +6,9 @@ import java.util.Map;
 
 import org.cloudbus.cloudsim.Log;
 import org.fog.application.*;
-import org.fog.entities.FogDevice;
 import org.fog.examples.DataPlacement;
 import org.fog.placement.ModuleMapping;
+import org.fog2.entities.FogDevice;
 
 
 

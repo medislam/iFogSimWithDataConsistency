@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.fog.entities.FogDevice;
 import org.fog.examples.DataPlacement;
 import org.fog.jni.GraphPartitioning;
+import org.fog2.entities.FogDevice;
 
 public class FreeCapacityVector {
 	public Map<String,Long> freeCapacity = new HashMap<String,Long>();

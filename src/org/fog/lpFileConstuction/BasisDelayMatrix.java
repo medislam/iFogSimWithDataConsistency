@@ -13,12 +13,12 @@ import java.util.Map;
 
 import org.cloudbus.cloudsim.network.*;
 import org.fog.application.Application;
-import org.fog.entities.FogDevice; 
-import org.fog.entities.Actuator;
-import org.fog.entities.Sensor;
 import org.fog.examples.DataPlacement;
 import org.fog.jni.GraphPartitioning;
 import org.fog.placement.ModuleMapping;
+import org.fog2.entities.Actuator;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Sensor;
 
 public class BasisDelayMatrix {
 	private TopologicalGraph graph = new TopologicalGraph();

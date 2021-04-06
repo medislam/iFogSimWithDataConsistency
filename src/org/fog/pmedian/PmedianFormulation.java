@@ -12,10 +12,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import org.fog.entities.FogBroker;
 import org.fog.examples.DataPlacement;
 import org.fog.lpFileConstuction.BasisDelayMatrix;
 import org.fog.stats.Stats;
+import org.fog2.entities.FogBroker;
 
 public class PmedianFormulation {
 	

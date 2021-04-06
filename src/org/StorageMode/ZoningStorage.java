@@ -19,8 +19,6 @@ import org.fog.cplex.DataAllocation;
 import org.fog.dataConsistency.QuorumConsistency;
 import org.fog.dataConsistency.ReadOneWriteAllConsistency;
 import org.fog.dataConsistency.ReadOneWriteOneConsistency;
-import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
 import org.fog.examples.DataPlacement;
 import org.fog.lpFileConstuction.BasisDelayMatrix;
 import org.fog.lpFileConstuction.ConsProdMatrix;
@@ -32,6 +30,8 @@ import org.fog.lpFileConstuction.MakeLPFileInZone;
 import org.fog.placement.Controller;
 import org.fog.placement.ModuleMapping;
 import org.fog.utils.TimeKeeper;
+import org.fog2.entities.FogBroker;
+import org.fog2.entities.FogDevice;
 
 public class ZoningStorage {
 	

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.cloudbus.cloudsim.core.CloudSim;
-import org.fog.entities.Tuple;
+import org.fog2.entities.Tuple;
 
 /**
  * CloudletSchedulerTimeShared implements a policy of scheduling performed by a virtual machine.

@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.fog.application.Application;
-import org.fog.entities.FogDevice;
 import org.fog.examples.DataPlacement;
 import org.fog.jni.GraphPartitioning;
+import org.fog2.entities.FogDevice;
 
 public class DataAllocation {
 	//public static Map<String, Integer> dataPlacementMap = new HashMap<String, Integer>();

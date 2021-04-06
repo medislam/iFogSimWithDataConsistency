@@ -3,8 +3,8 @@ package org.fog.placement;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.fog.entities.FogDevice;
 import org.fog.examples.DataPlacement;
+import org.fog2.entities.FogDevice;
 
 public class ModuleMapping {
 	/**

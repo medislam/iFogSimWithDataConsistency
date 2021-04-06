@@ -27,15 +27,15 @@ import org.cloudbus.cloudsim.sdn.overbooking.BwProvisionerOverbooking;
 import org.cloudbus.cloudsim.sdn.overbooking.PeProvisionerOverbooking;
 import org.fog.application.AppLoop;
 import org.fog.application.Application;
-import org.fog.entities.Actuator;
-import org.fog.entities.FogDevice;
-import org.fog.entities.FogDeviceCharacteristics;
-import org.fog.entities.Sensor;
 import org.fog.policy.AppModuleAllocationPolicy;
 import org.fog.scheduler.StreamOperatorScheduler;
 import org.fog.utils.FogLinearPowerModel;
 import org.fog.utils.FogUtils;
 import org.fog.utils.distribution.DeterministicDistribution;
+import org.fog2.entities.Actuator;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.FogDeviceCharacteristics;
+import org.fog2.entities.Sensor;
 
 public class DataPlacement {
 
@@ -96,20 +96,20 @@ public class DataPlacement {
 //	public static final int nb_RPOP = 1; //2 RPOP per DC
 //	public static final int nb_DC = 1; //
 
-//	public static int nb_HGW =  50; //6 HGW per LPOP
+//	public static int nb_HGW =  200; //6 HGW per LPOP
 //	public static final int nb_LPOP = 10; //4 LPOP per RPOP
 //	public static final int nb_RPOP = 2; //2 RPOP per DC
 //	public static final int nb_DC = 1; //
 	
 	
-	public static int nb_HGW = 1000; //6 HGW per LPOP
+	public static int nb_HGW = 300; //6 HGW per LPOP
 	public static final int nb_LPOP = 100; //4 LPOP per RPOP
 	public static final int nb_RPOP = 10; //2 RPOP per DC
 	public static final int nb_DC = 1; //
 	
 //	public static int nb_HGW = 8; //6 HGW per LPOP
-//	public static final int nb_LPOP = 8; //4 LPOP per RPOP
-//	public static final int nb_RPOP = 4; //2 RPOP per DC
+//	public static final int nb_LPOP = 4; //4 LPOP per RPOP
+//	public static final int nb_RPOP = 2; //2 RPOP per DC
 //	public static final int nb_DC = 1; //
 	
 //	public static final int nb_SnrPerHGW = 15;
@@ -173,7 +173,7 @@ public class DataPlacement {
 	public static final String distributed = "distributed";
 	
 	//private static final List<String> dataflows = Arrays.asList(zoning,mixed,distributed);
-	public static final List<String> dataflows = Arrays.asList(zoning);
+	public static final List<String> dataflows = Arrays.asList(distributed);
 	
 	
 	
@@ -182,7 +182,7 @@ public class DataPlacement {
 	public static int min_data_replica;
 	public static int max_data_replica;
 	
-	public static int critical_data_pourcentage = 30;
+	public static int critical_data_pourcentage = 0;
 	
 	public static int nb_shortest_Paths_Nodes = 5;
 	

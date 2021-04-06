@@ -23,10 +23,6 @@ import org.fog.criticalDataPourcentage.CriticalData;
 import org.fog.dataConsistency.QuorumConsistency;
 import org.fog.dataConsistency.ReadOneWriteAllConsistency;
 import org.fog.dataConsistency.ReadOneWriteOneConsistency;
-import org.fog.entities.Actuator;
-import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
-import org.fog.entities.Sensor;
 import org.fog.examples.DataPlacement;
 import org.fog.lpFileConstuction.BasisDelayMatrix;
 import org.fog.lpFileConstuction.ConsProdMatrix;
@@ -46,6 +42,10 @@ import org.fog.pmedian.Pmedian;
 import org.fog.pmedian.PmedianFormulation;
 import org.fog.pmedian.PmedianSolving;
 import org.fog.utils.TimeKeeper;
+import org.fog2.entities.Actuator;
+import org.fog2.entities.FogBroker;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Sensor;
 
 public class FogStorage {
 
@@ -86,10 +86,10 @@ public class FogStorage {
 		application.setUserId(broker.getId());
 		application.setFogDeviceList(DataPlacement.fogDevices);
 
-		DataPlacement.min_data_replica = 1;
-		DataPlacement.max_data_replica = 1;
+		DataPlacement.min_data_replica = 3;
+		DataPlacement.max_data_replica = 3;
 		DataPlacement.QW = 1;
-		DataPlacement.QR = 1;
+		DataPlacement.QR = 2;
 
 		System.out.println("Controller!");
 		Log.writeInLogFile("DataPlacement", "Controller!");
@@ -167,66 +167,142 @@ public class FogStorage {
 		CriticalData critical = new CriticalData();
 		application.setDataConsistencyMap(critical.getCriticalData(application.getTupleList(),DataPlacement.critical_data_pourcentage));
 		application.setDataConsistencyProtocol(new QuorumConsistency(DataPlacement.QW, DataPlacement.QR));
-
-		/* generate write and read basis delay files */
-		delayMatrix.generateBasisWriteDelayFile(DataPlacement.nb_HGW);
-		delayMatrix.generateBasisReadDelayFile(DataPlacement.nb_HGW);
-
-		/* generate Data Size vector */
-		System.out.println("Generating of Data Size!");
-		Log.writeInLogFile("DataPlacement", "Generating of Data Size!");
-		DataSizeVector dataSizeVec = new DataSizeVector(application.getEdgeMap(), DataPlacement.nb_Service_HGW,DataPlacement.nb_Service_LPOP, DataPlacement.nb_Service_RPOP,application);
-		dataSizeVec.generateDataSizeFile();
-
-		/* generate ConsProd matrix */
-		System.out.println("Generating of ConsProdMap!");
-		Log.writeInLogFile("DataPlacement", "Generating of ConsProdMap!");
-		ConsProdMatrix consProdMap = new ConsProdMatrix(application.getEdgeMap(), DataPlacement.nb_Service_HGW,DataPlacement.nb_Service_LPOP, DataPlacement.nb_Service_RPOP,DataPlacement.nb_Service_DC);
-		consProdMap.generateConsProdFile();
-
-		/* generate Free Capacity vector */
-		System.out.println("Generating of Free Capacity!");
-		Log.writeInLogFile("DataPlacement", "Generating of Free Capacity!");
-		FreeCapacityVector freeCapacity = new FreeCapacityVector(DataPlacement.fogDevices, DataPlacement.nb_HGW,DataPlacement.nb_LPOP, DataPlacement.nb_RPOP,DataPlacement.nb_DC);
-		freeCapacity.generateFreeCapacityFile();
-		// System.out.println("\n"+freeCapacity.toString());
-
-		System.out.println("Generating of Data Actors!");
-		Log.writeInLogFile("DataPlacement", "Generating of Data Actors!");
-		generateDataActorsFile();
-
-		long begin_t = Calendar.getInstance().getTimeInMillis();
-
-		System.out.println("Making LP file...");
-		Log.writeInLogFile("DataPlacement", "Making LP file...");
-		// MakeLPFile2 mlpf = new MakeLPFile2(DataPlacement.nb_HGW);
-		MakeLPFile mlpf = new MakeLPFile(DataPlacement.nb_HGW);
 		
-		System.gc();
+//		iFogStor method
 
-		int dataHost, dataCons, dataProd;
-		dataHost = DataPlacement.nb_HGW + DataPlacement.nb_LPOP	+ DataPlacement.nb_RPOP + DataPlacement.nb_DC;
-		dataProd = DataPlacement.nb_Service_HGW + DataPlacement.nb_Service_LPOP	+ DataPlacement.nb_Service_RPOP;
-		dataCons = DataPlacement.nb_Service_LPOP+ DataPlacement.nb_Service_RPOP + DataPlacement.nb_Service_DC;
-		long end_t = Calendar.getInstance().getTimeInMillis();
-		long period_t = end_t - begin_t;
+//		/* generate write and read basis delay files */
+//		delayMatrix.generateBasisWriteDelayFile(DataPlacement.nb_HGW);
+//		delayMatrix.generateBasisReadDelayFile(DataPlacement.nb_HGW);
+//
+//		/* generate Data Size vector */
+//		System.out.println("Generating of Data Size!");
+//		Log.writeInLogFile("DataPlacement", "Generating of Data Size!");
+//		DataSizeVector dataSizeVec = new DataSizeVector(application.getEdgeMap(), DataPlacement.nb_Service_HGW,DataPlacement.nb_Service_LPOP, DataPlacement.nb_Service_RPOP,application);
+//		dataSizeVec.generateDataSizeFile();
+//
+//		/* generate ConsProd matrix */
+//		System.out.println("Generating of ConsProdMap!");
+//		Log.writeInLogFile("DataPlacement", "Generating of ConsProdMap!");
+//		ConsProdMatrix consProdMap = new ConsProdMatrix(application.getEdgeMap(), DataPlacement.nb_Service_HGW,DataPlacement.nb_Service_LPOP, DataPlacement.nb_Service_RPOP,DataPlacement.nb_Service_DC);
+//		consProdMap.generateConsProdFile();
+//
+//		/* generate Free Capacity vector */
+//		System.out.println("Generating of Free Capacity!");
+//		Log.writeInLogFile("DataPlacement", "Generating of Free Capacity!");
+//		FreeCapacityVector freeCapacity = new FreeCapacityVector(DataPlacement.fogDevices, DataPlacement.nb_HGW,DataPlacement.nb_LPOP, DataPlacement.nb_RPOP,DataPlacement.nb_DC);
+//		freeCapacity.generateFreeCapacityFile();
+//		// System.out.println("\n"+freeCapacity.toString());
+//
+//		System.out.println("Generating of Data Actors!");
+//		Log.writeInLogFile("DataPlacement", "Generating of Data Actors!");
+//		generateDataActorsFile();
+//
+		long begin_t ;
+//		= Calendar.getInstance().getTimeInMillis();
+//
+//		System.out.println("Making LP file...");
+//		Log.writeInLogFile("DataPlacement", "Making LP file...");
+//		// MakeLPFile2 mlpf = new MakeLPFile2(DataPlacement.nb_HGW);
+//		MakeLPFile mlpf = new MakeLPFile(DataPlacement.nb_HGW);
+//		
+//		System.gc();
+//
+//		int dataHost, dataCons, dataProd;
+//		dataHost = DataPlacement.nb_HGW + DataPlacement.nb_LPOP	+ DataPlacement.nb_RPOP + DataPlacement.nb_DC;
+//		dataProd = DataPlacement.nb_Service_HGW + DataPlacement.nb_Service_LPOP	+ DataPlacement.nb_Service_RPOP;
+//		dataCons = DataPlacement.nb_Service_LPOP+ DataPlacement.nb_Service_RPOP + DataPlacement.nb_Service_DC;
+		long end_t;
+//		= Calendar.getInstance().getTimeInMillis();
+		long period_t ;
+//		= end_t - begin_t;
+//
+//		org.fog.examples.Log.writeProblemFormulationTime(DataPlacement.nb_HGW,"Methode: iFogStor" + "\ttime:" + String.valueOf(period_t));
+//		
+//		begin_t = Calendar.getInstance().getTimeInMillis();
+//		CallCplex cc = new CallCplex(DataPlacement.nb_HGW + "cplex_"+ DataPlacement.nb_DataCons_By_DataProd + ".lp", dataProd,dataHost);
+//		cc.problemSolving(DataPlacement.nb_HGW);
+//	    end_t = Calendar.getInstance().getTimeInMillis();
+//		period_t = end_t - begin_t;
+//		
+//		org.fog.examples.Log.writeSolvingTime(DataPlacement.nb_HGW,"Methode: iFogStor" + "\ttime:" + String.valueOf(period_t));
+//		
+//		System.gc();
+		
+		
+		// use replication without consistency
 
-		org.fog.examples.Log.writeProblemFormulationTime(DataPlacement.nb_HGW,"Methode: iFogStor" + "\ttime:" + String.valueOf(period_t));
+		
+		/* data allocation */
+		
+		
+		
+		
+		
+		System.out.println("Compute iFogStor replicas");
+		Log.writeInLogFile("P median:", "\tCompute iFogStor replicas");
+		int i=0;
+		
+		List<Integer> potentialNodes = new ArrayList<Integer>();
+		for(FogDevice fogdev : DataPlacement.fogDevices) {
+			potentialNodes.add(fogdev.getId());
+		}
+		
 		
 		begin_t = Calendar.getInstance().getTimeInMillis();
-		CallCplex cc = new CallCplex(DataPlacement.nb_HGW + "cplex_"+ DataPlacement.nb_DataCons_By_DataProd + ".lp", dataProd,dataHost);
-		cc.problemSolving(DataPlacement.nb_HGW);
-	    end_t = Calendar.getInstance().getTimeInMillis();
+		
+		for(AppEdge edge: application.getEdges()){
+			
+			if((edge.getTupleType().startsWith("TempSNR") || edge.getTupleType().startsWith("TempAct"))){
+				continue;
+			}
+			
+			System.out.println("\n-----------------------------------");
+			System.out.println("Edge:"+edge.getTupleType());
+			Log.writeInLogFile("P median:", "Tuple tupe:"+edge.getTupleType());
+			
+			int producerNode = 	application.getFogDeviceByName(ModuleMapping.getDeviceHostModule(application.getEdgeMap().get(edge.getTupleType()).getSource()) ).getId();
+
+			List<Integer> nodes = new ArrayList<Integer>();
+			
+			for(String consModule: application.getEdgeMap().get(edge.getTupleType()).getDestination()){
+				nodes.add(application.getFogDeviceByName(ModuleMapping.getDeviceHostModule(consModule)).getId());
+			}
+			
+			
+			
+			System.out.println("P median:"+ "Tuple tupe:"+edge.getTupleType()+"\nodes:"+nodes);
+			System.out.println("P median:"+ "Tuple tupe:"+edge.getTupleType()+"\tshorest nodes:"+potentialNodes);
+			
+			Log.writeInLogFile("P median:", "Tuple tupe:"+edge.getTupleType()+"\nodes:"+nodes);
+			Log.writeInLogFile("P median:", "Tuple tupe:"+edge.getTupleType()+"\tshorest nodes:"+potentialNodes);
+			
+			int nb_median= 3; // 3 replicas
+			
+			System.out.println("P-median formualtion");
+			PmedianFormulation pMedianFormulation = new PmedianFormulation(nb_median);
+			pMedianFormulation.contructionLpFile(producerNode, nodes, potentialNodes, i);
+			
+			System.out.println("P-median solving");
+			PmedianSolving pMedianSolving = new PmedianSolving();
+			pMedianSolving.problemSolving(nodes, potentialNodes, i);
+			
+			List<Integer> replicas = pMedianSolving.getSolution(nodes, potentialNodes,i);
+			
+			System.out.println("Replicas: "+replicas.toString());
+			
+			dataAllocation.dataPlacementMap.put(edge.getTupleType(), replicas);
+
+			i++;
+			
+		}	
+		
+		end_t = Calendar.getInstance().getTimeInMillis();
 		period_t = end_t - begin_t;
-		
-		org.fog.examples.Log.writeSolvingTime(DataPlacement.nb_HGW,"Methode: iFogStor" + "\ttime:" + String.valueOf(period_t));
-		
-		System.gc();
+				
+		org.fog.examples.Log.writePmedianTime(DataPlacement.nb_HGW,"iFogStor P Median" + "\ttime:" + String.valueOf(period_t));
 
-		
-		/* recuperation of data allocation */
 
-		dataAllocation.setDataPlacementMap(DataPlacement.nb_HGW, application);
+		//dataAllocation.setDataPlacementMap(DataPlacement.nb_HGW, application);
 		org.fog.examples.Log.writeDataAllocationStats(DataPlacement.nb_HGW,"------------------------------------------\n"+ DataPlacement.nb_DataCons_By_DataProd + "\n"+ DataPlacement.storageMode + "\n"+ dataAllocation.dataAllocationStats(application));
 		dataAllocation.saveDataAllocationMap();
 
@@ -373,32 +449,32 @@ public class FogStorage {
 //		 iFogStorS.saveEstimationSolution();
 //		 LatencyStats.saveLatencyMap(2);
 //		 System.out.println("overall latency = "+iFogStorS.computeOverallLatency());
-		 
+//		 
 		 
 		
-		 /***
-		 System.out.println("\n------------------------------------");
-		 System.out.println("------- Estimation   Exact --------");
-		 System.out.println("------------------------------------ ");
 		 
-		 begin_t = Calendar.getInstance().getTimeInMillis();
-		 ConsistencyOverheadExact exact = new ConsistencyOverheadExact(application, moduleMapping);
-		 exact.initializeEstimationMap();
-		 exact.consitencyEsitmation();
-		 end_t = Calendar.getInstance().getTimeInMillis();
-		 period_t = end_t - begin_t;
-		 org.fog.examples.Log.writeSimulationTime(DataPlacement.nb_HGW,"Methode: Exact"+"		time:"+String.valueOf(period_t));
-		 exact.getEstimationSolution();
-		 exact.saveEstimationMap();
-		 exact.saveEstimationSolution();
-		 LatencyStats.saveLatencyMap(3);
-		 System.out.println("overall latency = "+exact.computeOverallLatency());
-		
-		 org.fog.examples.Log.writeNbCombinaison(DataPlacement.nb_HGW,"Methode: Exact "+"\tNb_Combin:"+String.valueOf(allCombinExact()));
-		 org.fog.examples.Log.writeNbCombinaison(DataPlacement.nb_HGW,"======================================================");
-		 org.fog.examples.Log.writeSimulationTime(DataPlacement.nb_HGW,"======================================================");
+//		 System.out.println("\n------------------------------------");
+//		 System.out.println("------- Estimation   Exact --------");
+//		 System.out.println("------------------------------------ ");
+//		 
+//		 begin_t = Calendar.getInstance().getTimeInMillis();
+//		 ConsistencyOverheadExact exact = new ConsistencyOverheadExact(application, moduleMapping);
+//		 exact.initializeEstimationMap();
+//		 exact.consitencyEsitmation();
+//		 end_t = Calendar.getInstance().getTimeInMillis();
+//		 period_t = end_t - begin_t;
+//		 org.fog.examples.Log.writeSimulationTime(DataPlacement.nb_HGW,"Methode: Exact"+"		time:"+String.valueOf(period_t));
+//		 exact.getEstimationSolution();
+//		 exact.saveEstimationMap();
+//		 exact.saveEstimationSolution();
+//		 LatencyStats.saveLatencyMap(3);
+//		 System.out.println("overall latency = "+exact.computeOverallLatency());
+//		
+//		 org.fog.examples.Log.writeNbCombinaison(DataPlacement.nb_HGW,"Methode: Exact "+"\tNb_Combin:"+String.valueOf(allCombinExact()));
+//		 org.fog.examples.Log.writeNbCombinaison(DataPlacement.nb_HGW,"======================================================");
+//		 org.fog.examples.Log.writeSimulationTime(DataPlacement.nb_HGW,"======================================================");
 		 
-		 ***/
+		 
 		
 		System.out.println("End of all simulations");
 

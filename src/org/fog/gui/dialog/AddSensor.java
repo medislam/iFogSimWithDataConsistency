@@ -21,10 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
 
-import org.fog.entities.Sensor;
 import org.fog.gui.core.Graph;
 import org.fog.gui.core.SensorGui;
 import org.fog.gui.core.SpringUtilities;
+import org.fog2.entities.Sensor;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class AddSensor extends JDialog {

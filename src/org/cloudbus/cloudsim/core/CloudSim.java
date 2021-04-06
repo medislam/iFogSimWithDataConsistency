@@ -23,14 +23,14 @@ import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.predicates.Predicate;
 import org.cloudbus.cloudsim.core.predicates.PredicateAny;
 import org.cloudbus.cloudsim.core.predicates.PredicateNone;
-import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
-import org.fog.entities.Tuple;
 import org.fog.examples.DataPlacement;
 import org.fog.placement.ModuleMapping;
 import org.fog.placement.ModulePlacement;
 import org.fog.stats.LatencyStats;
 import org.fog.utils.FogEvents;
+import org.fog2.entities.FogBroker;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Tuple;
 
 
 

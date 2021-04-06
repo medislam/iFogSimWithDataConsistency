@@ -6,7 +6,6 @@ import org.Results.SaveResults;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.fog.application.Application;
-import org.fog.entities.FogBroker;
 import org.fog.examples.DataPlacement;
 import org.fog.lpFileConstuction.BasisDelayMatrix;
 import org.fog.stats.LatencyStats;
@@ -14,6 +13,7 @@ import org.fog.stats.Stats;
 import org.fog.placement.Controller;
 import org.fog.placement.ModuleMapping;
 import org.fog.utils.TimeKeeper;
+import org.fog2.entities.FogBroker;
 
 public class ClosestNodeStorage {
 	

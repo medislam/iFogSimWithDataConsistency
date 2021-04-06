@@ -26,10 +26,6 @@ import org.fog.cplex.DataAllocation;
 import org.fog.dataConsistency.QuorumConsistency;
 import org.fog.dataConsistency.ReadOneWriteAllConsistency;
 import org.fog.dataConsistency.ReadOneWriteOneConsistency;
-import org.fog.entities.Actuator;
-import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
-import org.fog.entities.Sensor;
 import org.fog.examples.DataPlacement;
 import org.fog.lpFileConstuction.BasisDelayMatrix;
 import org.fog.placement.Controller;
@@ -37,6 +33,10 @@ import org.fog.placement.ModuleMapping;
 import org.fog.placement.ModulePlacement;
 import org.fog.stats.LatencyStats;
 import org.fog.stats.Stats;
+import org.fog2.entities.Actuator;
+import org.fog2.entities.FogBroker;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Sensor;
 
 public class ConsitencyOverheadiFogStorP {
 

@@ -14,10 +14,6 @@ import org.fog.application.AppEdge;
 import org.fog.application.AppLoop;
 import org.fog.application.AppModule;
 import org.fog.application.Application;
-import org.fog.entities.Actuator;
-import org.fog.entities.FogBroker;
-import org.fog.entities.FogDevice;
-import org.fog.entities.Sensor;
 import org.fog.examples.DataPlacement;
 import org.fog.stats.LatencyStats;
 import org.fog.utils.Config;
@@ -26,6 +22,10 @@ import org.fog.utils.FogUtils;
 import org.fog.utils.ModuleLaunchConfig;
 import org.fog.utils.NetworkUsageMonitor;
 import org.fog.utils.TimeKeeper;
+import org.fog2.entities.Actuator;
+import org.fog2.entities.FogBroker;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.Sensor;
 
 public class Controller extends SimEntity{
 	

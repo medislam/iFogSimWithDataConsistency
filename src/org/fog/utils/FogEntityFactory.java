@@ -12,10 +12,10 @@ import org.cloudbus.cloudsim.power.models.PowerModelLinear;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 import org.cloudbus.cloudsim.sdn.overbooking.BwProvisionerOverbooking;
 import org.cloudbus.cloudsim.sdn.overbooking.PeProvisionerOverbooking;
-import org.fog.entities.FogDevice;
-import org.fog.entities.FogDeviceCharacteristics;
 import org.fog.policy.AppModuleAllocationPolicy;
 import org.fog.scheduler.StreamOperatorScheduler;
+import org.fog2.entities.FogDevice;
+import org.fog2.entities.FogDeviceCharacteristics;
 
 public class FogEntityFactory {
 
