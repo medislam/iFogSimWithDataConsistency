@@ -88,8 +88,8 @@ public class FogStorage {
 
 		DataPlacement.min_data_replica = 3;
 		DataPlacement.max_data_replica = 3;
-		DataPlacement.QW = 1;
-		DataPlacement.QR = 2;
+		DataPlacement.QW = 2;
+		DataPlacement.QR = 1;
 
 		System.out.println("Controller!");
 		Log.writeInLogFile("DataPlacement", "Controller!");
@@ -449,10 +449,10 @@ public class FogStorage {
 //		 iFogStorS.saveEstimationSolution();
 //		 LatencyStats.saveLatencyMap(2);
 //		 System.out.println("overall latency = "+iFogStorS.computeOverallLatency());
+////		 
 //		 
-		 
-		
-		 
+//		
+//		 
 //		 System.out.println("\n------------------------------------");
 //		 System.out.println("------- Estimation   Exact --------");
 //		 System.out.println("------------------------------------ ");

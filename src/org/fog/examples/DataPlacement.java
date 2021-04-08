@@ -96,16 +96,16 @@ public class DataPlacement {
 //	public static final int nb_RPOP = 1; //2 RPOP per DC
 //	public static final int nb_DC = 1; //
 
-//	public static int nb_HGW =  200; //6 HGW per LPOP
-//	public static final int nb_LPOP = 10; //4 LPOP per RPOP
-//	public static final int nb_RPOP = 2; //2 RPOP per DC
-//	public static final int nb_DC = 1; //
-	
-	
-	public static int nb_HGW = 300; //6 HGW per LPOP
+	public static int nb_HGW =  1000; //6 HGW per LPOP
 	public static final int nb_LPOP = 100; //4 LPOP per RPOP
 	public static final int nb_RPOP = 10; //2 RPOP per DC
 	public static final int nb_DC = 1; //
+	
+	
+//	public static int nb_HGW = 10; //6 HGW per LPOP
+//	public static final int nb_LPOP = 1; //4 LPOP per RPOP
+//	public static final int nb_RPOP = 1; //2 RPOP per DC
+//	public static final int nb_DC = 1; //
 	
 //	public static int nb_HGW = 8; //6 HGW per LPOP
 //	public static final int nb_LPOP = 4; //4 LPOP per RPOP
@@ -117,6 +117,8 @@ public class DataPlacement {
 	
 	public static final int nb_SnrPerHGW = 1;
 	public static final int nb_ActPerHGW = 1;
+	
+	public static int critical_data_pourcentage = 30;
 
 	
 	/* nb services on each level */
@@ -173,7 +175,7 @@ public class DataPlacement {
 	public static final String distributed = "distributed";
 	
 	//private static final List<String> dataflows = Arrays.asList(zoning,mixed,distributed);
-	public static final List<String> dataflows = Arrays.asList(distributed);
+	public static final List<String> dataflows = Arrays.asList(zoning);
 	
 	
 	
@@ -182,7 +184,7 @@ public class DataPlacement {
 	public static int min_data_replica;
 	public static int max_data_replica;
 	
-	public static int critical_data_pourcentage = 0;
+	
 	
 	public static int nb_shortest_Paths_Nodes = 5;
 	
@@ -278,6 +280,7 @@ public class DataPlacement {
 						
 						
 						dataflow_used = zoning;
+						//dataflow_used = distributed;
 						
 						submitApplication= true;
 						load_consumption_times = true;
